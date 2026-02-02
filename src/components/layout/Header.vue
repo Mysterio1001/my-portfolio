@@ -19,12 +19,12 @@
             :href="link.href"
             class="font-mono text-sm text-slate-500 hover:text-blue-500 dark:text-slate-400 dark:hover:text-blue-400 transition-colors"
           >
-            {{ link.label }}
+            {{ t(link.label) }}
           </a>
         </nav>
 
         <div class="flex items-center gap-4">
-          <div class="relative">
+          <div ref="langMenuRef" class="relative">
             <button
               @click="langMenuOpen = !langMenuOpen"
               class="flex items-center gap-1 font-mono text-xs text-slate-600 dark:text-slate-300 hover:text-blue-500 cursor-pointer"
@@ -45,7 +45,7 @@
                   v-for="lang in languages"
                   :key="lang.code"
                   @click="selectLang(lang.code)"
-                  class="w-full text-left px-4 py-2 text-xs font-mono hover:bg-blue-500/10 transition-colors"
+                  class="w-full text-left px-4 py-2 text-xs font-mono hover:bg-blue-500/10 transition-colors cursor-pointer"
                 >
                   {{ lang.code }} - {{ lang.label }}
                 </button>
@@ -97,7 +97,7 @@
 
 <script setup>
 import { ref } from "vue";
-import { useDark, useToggle } from "@vueuse/core";
+import { useDark, useToggle, onClickOutside } from "@vueuse/core";
 import { Moon, Sun, Menu, X, Terminal, ChevronDown } from "lucide-vue-next";
 import { useI18n } from "vue-i18n";
 
@@ -118,11 +118,12 @@ const toggleDark = useToggle(isDark);
 const mobileMenuOpen = ref(false);
 const currentLang = ref("ZH");
 const langMenuOpen = ref(false);
+const langMenuRef = ref(null);
 
 const navLinks = [
-  { href: "#home", label: "Home" },
-  { href: "#projects", label: "Projects" },
-  { href: "#about", label: "About" },
+  { href: "#home", label: "nav.home" },
+  { href: "#projects", label: "nav.projects" },
+  { href: "#about", label: "nav.about" },
 ];
 
 const languages = [
@@ -135,6 +136,10 @@ const selectLang = (code) => {
   currentLang.value = code;
   langMenuOpen.value = false;
 };
+
+onClickOutside(langMenuRef, () => {
+  langMenuOpen.value = false;
+});
 </script>
 
 <style scoped>

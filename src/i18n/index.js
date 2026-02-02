@@ -10,6 +10,7 @@ const i18n = createI18n({
     EN: en,
     ZH: zh,
   },
+  returnObjects: true,
 });
 
 export default i18n;

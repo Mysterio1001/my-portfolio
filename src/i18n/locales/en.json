@@ -3,5 +3,16 @@
     "home": "Home",
     "projects": "Projects",
     "about": "About"
+  },
+  "hero": {
+    "description": "Skilled in frontend frameworks and AI collaboration to solve complex logic and optimize performance. Passionate about technical excellence and teamwork to deliver superior product value.",
+    "viewProjects": "View Projects",
+    "downloadResume": "Download Resume",
+    "typewriter": [
+      "Frontend Engineer",
+      "MES System Development",
+      "AI-Driven Development",
+      "API & Logic Integration"
+    ]
   }
 }

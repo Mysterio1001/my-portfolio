@@ -1,6 +1,7 @@
 <script setup>
 import BackgroundGlow from "./components/layout/BackgroundGlow.vue";
 import Header from "./components/layout/Header.vue";
+import Hero from "./components/portfolio/Hero.vue";
 </script>
 
 <template>
@@ -9,8 +10,8 @@ import Header from "./components/layout/Header.vue";
     <BackgroundGlow />
     <Header />
 
-    <main class="relative z-10 pt-16">
-      <section
+    <Hero />
+    <!-- <section
         id="home"
         class="min-h-screen flex items-center justify-center p-6"
       >
@@ -38,8 +39,7 @@ import Header from "./components/layout/Header.vue";
             >
           </div>
         </div>
-      </section>
-    </main>
+      </section> -->
   </div>
 </template>
 
