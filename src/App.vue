@@ -4,7 +4,7 @@ import Header from "./components/layout/Header.vue";
 </script>
 
 <template>
-  <div class="wrapper">
+  <div class="relative min-h-screen overflow-hidden">
     <!-- 背景呼吸球 -->
     <BackgroundGlow />
     <Header />
