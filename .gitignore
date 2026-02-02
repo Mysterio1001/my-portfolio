@@ -22,3 +22,24 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Vite 特有
+*.dev
+*.mjs.map
+
+# 測試框架相關 (如果你之後有寫 Unit Test)
+/coverage
+/test-results
+
+# 檔案系統相關 (Mac 必備)
+.AppleDB
+.AppleDesktop
+.AppleDouble
+.LSOverride
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# 環境變數 (最重要！避免把 API Key 傳到 Git)
+.env
+.env*.local
