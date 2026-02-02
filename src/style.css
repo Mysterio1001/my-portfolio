@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* 預設值改為深色模式數值 */
+:root {
+  --app-bg: #050505;
+  --app-text: #f8fafc;
+  --glass-bg: rgba(15, 15, 15, 0.4);
+  --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+/* 只有當明確標記為 .light 時才切換回淺色 */
+.light {
+  --app-bg: #f8fafc;
+  --app-text: #0f172a;
+  --glass-bg: rgba(255, 255, 255, 0.6);
+  --glass-border: rgba(203, 213, 225, 0.5);
+}
+
+html,
+body {
+  background-color: var(--app-bg) !important;
+  color: var(--app-text) !important;
+  /* 移除第一次載入時的 transition，避免初始閃爍感，點擊切換時才會有效果 */
+  transition:
+    background-color 0.8s ease-in-out,
+    color 0.8s ease-in-out;
+}
+
+/* 玻璃效果與其他部分保持不變 */
+.glass-effect {
+  background-color: var(--glass-bg) !important;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  transition:
+    background-color 0.8s ease,
+    border-color 0.8s ease,
+    box-shadow 0.8s ease !important;
+}
