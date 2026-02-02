@@ -55,7 +55,7 @@
 
         <div class="hidden lg:block relative">
           <div
-            class="absolute -inset-1 bg-gradient-to-br from-blue-500/30 to-purple-500/30 rounded-2xl blur-xl opacity-50"
+            class="absolute -inset-1 bg-linear-to-br from-blue-500/30 to-purple-500/30 rounded-2xl blur-xl opacity-50"
           ></div>
           <div
             class="relative glass-effect rounded-2xl overflow-hidden border border-white/10 shadow-2xl"
