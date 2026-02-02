@@ -1,21 +1,12 @@
 <script setup>
-// 1. 匯入我們剛剛轉換好的 Header 組件
-import Header from "./components/Header.vue";
-// 之後我們會在這裡匯入 Hero, Projects 等組件
-// import Hero from './components/portfolio/Hero.vue'
-
-// 這裡不需要重複定義 isDark 邏輯，因為 Header 裡面已經有主題切換功能了
+import BackgroundGlow from "./components/layout/BackgroundGlow.vue";
+import Header from "./components/layout/Header.vue";
 </script>
 
 <template>
-  <div class="relative min-h-screen overflow-hidden">
-    <div
-      class="fixed top-[-10%] left-[-10%] w-125 h-125 bg-white light:bg-white dark:bg-blue-600 rounded-full blur-[120px] opacity-100 dark:opacity-20 animate-pulse pointer-events-none transition-all duration-1000"
-    />
-    <div
-      class="fixed bottom-[-10%] right-[-10%] w-150 h-150 bg-white light:bg-white dark:bg-purple-900 rounded-full blur-[150px] opacity-100 dark:opacity-20 pointer-events-none transition-all duration-1000"
-    />
-
+  <div class="wrapper">
+    <!-- 背景呼吸球 -->
+    <BackgroundGlow />
     <Header />
 
     <main class="relative z-10 pt-16">

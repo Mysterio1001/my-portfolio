@@ -1,6 +1,6 @@
 <template>
   <header class="fixed top-0 left-0 right-0 z-50 glass-effect border-b">
-    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <div class="mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex h-16 items-center justify-between">
         <a
           href="#"
@@ -99,8 +99,11 @@
 import { ref } from "vue";
 import { useDark, useToggle } from "@vueuse/core";
 import { Moon, Sun, Menu, X, Terminal, ChevronDown } from "lucide-vue-next";
+import { useI18n } from "vue-i18n";
 
-// 1. 主題管理 (沿用我們之前測試成功的設定)
+const { locale, t } = useI18n();
+
+// 1. 主題管理
 // Header.vue
 const isDark = useDark({
   selector: "html",
@@ -113,7 +116,7 @@ const toggleDark = useToggle(isDark);
 
 // 2. 狀態定義
 const mobileMenuOpen = ref(false);
-const currentLang = ref("EN");
+const currentLang = ref("ZH");
 const langMenuOpen = ref(false);
 
 const navLinks = [
@@ -123,11 +126,12 @@ const navLinks = [
 ];
 
 const languages = [
-  { code: "EN", label: "English" },
   { code: "ZH", label: "中文" },
+  { code: "EN", label: "English" },
 ];
 
 const selectLang = (code) => {
+  locale.value = code; // 直接修改全域語系
   currentLang.value = code;
   langMenuOpen.value = false;
 };
