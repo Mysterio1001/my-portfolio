@@ -3,6 +3,7 @@ import BackgroundGlow from "./components/layout/BackgroundGlow.vue";
 import Header from "./components/layout/Header.vue";
 import Hero from "./components/portfolio/Hero.vue";
 import Projects from "./components/portfolio/Projects.vue";
+import About from "./components/portfolio/About.vue";
 </script>
 
 <template>
@@ -13,6 +14,7 @@ import Projects from "./components/portfolio/Projects.vue";
 
     <Hero />
     <Projects />
+    <About />
   </div>
 </template>
 

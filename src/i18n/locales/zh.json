@@ -19,5 +19,29 @@
     "title": "邏輯驅動，品質鑄就",
     "subtitle": "專注於高品質前端介面實作與 API 整合，並具備後端開發與跨端協作經驗，確保專案具備高度可維護性。",
     "viewAllProjects": "查看全部專案"
+  },
+  "about": {
+    "title": "關於我",
+    "bio": {
+      "1": {
+        "title": "A",
+        "desc": "QAZWSX"
+      },
+      "2": {
+        "title": "A",
+        "desc": "QAZWSX"
+      },
+      "3": {
+        "title": "A",
+        "desc": "QAZWSX"
+      }
+    },
+    "timeLine": {
+      "1": {
+        "title": "A",
+        "organization": "QAZWSX",
+        "desc": "gjitrgjreogjrpegrelgker"
+      }
+    }
   }
 }
