@@ -69,22 +69,21 @@
                 <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
               </div>
               <span class="font-mono text-xs text-slate-500 ml-2">
-                developer.vue
+                developer.js
               </span>
             </div>
             <!-- 程式碼展現 -->
             <pre class="p-6 font-mono text-sm leading-relaxed text-left">
 <code class="font-mono text-sm sm:text-base leading-relaxed">
-    <span class="text-purple-600 dark:text-purple-400 font-bold">const</span> 
-    <span class="text-blue-600 dark:text-blue-400">developer</span> = {
+    <span class="text-purple-600 dark:text-purple-400 font-bold">const</span> <span class="text-blue-600 dark:text-blue-400">developer</span> = {
       <span class="text-red-600 dark:text-red-400">name</span>: <span class="text-green-600 dark:text-green-400">'Ian Wu'</span>,
       <span class="text-red-600 dark:text-red-400">role</span>: <span class="text-green-600 dark:text-green-400">'Frontend Engineer'</span>,
       <span class="text-red-600 dark:text-red-400">industry</span>: <span class="text-green-600 dark:text-green-400">'MES System'</span>,
       <span class="text-red-600 dark:text-red-400">skills</span>: [
-        <span class="text-green-600 dark:text-green-400">'Vue 2/3'</span>, <span class="text-green-600 dark:text-green-400">'React'</span>, <span class="text-green-600 dark:text-green-400">'TypeScript'</span>
-        <span class="text-green-600 dark:text-green-400">'SCSS/Tailwind CSS'</span>, <span class="text-green-600 dark:text-green-400">'RWD'</span>
+        <span class="text-green-600 dark:text-green-400">'Vue 2/3'</span>, <span class="text-green-600 dark:text-green-400">'React'</span>, <span class="text-green-600 dark:text-green-400">'TypeScript'</span>,
+        <span class="text-green-600 dark:text-green-400">'SCSS/Tailwind CSS'</span>, <span class="text-green-600 dark:text-green-400">'RWD'</span>,
         <span class="text-green-600 dark:text-green-400">'AI-Assisted Development'</span>
-      ]
+      ],
       <span class="text-red-600 dark:text-red-400">available</span>: <span class="text-green-600 dark:text-green-400">true</span>
     };
   </code>
@@ -102,20 +101,20 @@ import { ArrowDown, FileText, FolderOpen } from "lucide-vue-next";
 
 const { t, locale } = useI18n();
 
-// 1. 打字機邏輯
 const displayedText = ref("");
 const isDeleting = ref(false);
 const currentTitleIndex = ref(0);
-
-// 從 i18n 獲取標題清單
 const titlesKey = [
   "hero.typewriter.0",
   "hero.typewriter.1",
   "hero.typewriter.2",
   "hero.typewriter.3",
 ];
+
+// 從 i18n 獲取標題清單
 const titles = computed(() => titlesKey.map((i) => t(i)));
 
+// 打字機
 const type = () => {
   if (titles.value.length === 0) return;
 
@@ -143,12 +142,13 @@ const type = () => {
   setTimeout(type, typeSpeed);
 };
 
-// 當語言切換時，重置打字機避免索引溢出
+// 當語言切換時，重置打字機
 watch(locale, () => {
   displayedText.value = "";
   isDeleting.value = false;
   currentTitleIndex.value = 0;
 });
+
 onMounted(() => {
   type();
 });
