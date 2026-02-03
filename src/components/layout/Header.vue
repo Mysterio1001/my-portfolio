@@ -2,6 +2,7 @@
   <header class="fixed top-0 left-0 right-0 z-50 glass-effect border-b">
     <div class="mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex h-16 items-center justify-between">
+        <!-- 首頁按鈕 -->
         <a
           href="#"
           class="flex items-center gap-2 font-mono text-lg font-semibold"
@@ -11,7 +12,7 @@
             {{ "<IAN />" }}
           </span>
         </a>
-
+        <!-- 導航選項 -->
         <nav className="hidden md:flex items-center gap-8">
           <a
             v-for="link in navLinks"
@@ -22,11 +23,12 @@
             {{ t(link.label) }}
           </a>
         </nav>
-
+        <!-- 語言選擇 -->
         <div class="flex items-center gap-4">
           <div ref="langMenuRef" class="relative">
             <button
-              @click="langMenuOpen = !langMenuOpen"
+              @click="langToggle"
+              @mouseenter="langMenuOpen = true"
               class="flex items-center gap-1 font-mono text-xs text-slate-600 dark:text-slate-300 hover:text-blue-500 cursor-pointer"
             >
               {{ currentLang }}
@@ -130,6 +132,10 @@ const languages = [
   { code: "ZH", label: "中文" },
   { code: "EN", label: "English" },
 ];
+
+const langToggle = () => {
+  langMenuOpen.value = !langMenuOpen.value;
+};
 
 const selectLang = (code) => {
   locale.value = code; // 直接修改全域語系
