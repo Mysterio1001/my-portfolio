@@ -14,5 +14,10 @@
       "AI-Driven Development",
       "API & Logic Integration"
     ]
+  },
+  "projects": {
+    "title": "Logic Driven. Quality Built.",
+    "subtitle": "Focusing on high-quality frontend implementation and API integration, with experience in backend development and cross-stack collaboration to ensure superior code maintainability.",
+    "viewAllProjects": "View All Projects"
   }
 }

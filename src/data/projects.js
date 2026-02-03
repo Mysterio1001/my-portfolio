@@ -1,0 +1,38 @@
+export const projects = [
+  {
+    id: "note-x",
+    title: "Note X",
+    description: "Note X  PDF 閱讀器",
+    image: "",
+    tags: ["React", "TypeScript", "PHP", "WordPress"],
+    github: "https://github.com/Mysterio1001/beetles",
+    demo: "https://mysterio1001.github.io/TID10310_Poject-Report/index.html",
+  },
+  {
+    id: "2",
+    title: "Note Y",
+    description: "Note Y  PDF 閱讀器",
+    image: "",
+    tags: ["React", "TypeScript", "PHP", "WordPress"],
+    github: "https://github.com/Mysterio1001/beetles",
+    demo: "https://mysterio1001.github.io/TID10310_Poject-Report/index.html",
+  },
+  {
+    id: "23",
+    title: "Note Z",
+    description: "Note Z  PDF 閱讀器",
+    image: "",
+    tags: ["React", "TypeScript", "PHP", "WordPress"],
+    github: "https://github.com/Mysterio1001/beetles",
+    demo: "https://mysterio1001.github.io/TID10310_Poject-Report/index.html",
+  },
+  {
+    id: "24",
+    title: "Note AA",
+    description: "Note AA  PDF 閱讀器",
+    image: "",
+    tags: ["React", "TypeScript", "PHP", "WordPress"],
+    github: "https://github.com/Mysterio1001/beetles",
+    demo: "https://mysterio1001.github.io/TID10310_Poject-Report/index.html",
+  },
+];
