@@ -75,7 +75,7 @@
                   <!-- 時間 -->
                   <span
                     v-if="item.current"
-                    class="font-mono text-s text-yellow-300 animate-[pulse_2s_infinite]"
+                    class="font-mono text-xl animate-[pulse_2s_infinite] text-blue-700 dark:text-yellow-300"
                   >
                     PRESENT
                   </span>

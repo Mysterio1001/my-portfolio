@@ -24,23 +24,43 @@
     "title": "About Me",
     "bio": {
       "1": {
-        "title": "A",
-        "desc": "QAZWSX"
+        "title": "Self-introduction",
+        "desc": "Hello, I am Guan-Ru Wu. I graduated from the Department of Aquaculture at National Taiwan Ocean University, where I also earned my Master's degree. I am adept at communication, passionate about learning, and highly organized. When facing challenges, I apply rational thinking to solve problems and elevate projects to a higher standard. In my previous professional experiences, I consistently analyzed data to formulate strategies, ensuring efficient and stable execution. These attributes serve as a significant advantage in my transition to becoming a Front-End Engineer."
       },
       "2": {
-        "title": "A",
-        "desc": "QAZWSX"
+        "title": "Technical Training",
+        "desc": "lorem"
       },
       "3": {
-        "title": "A",
-        "desc": "QAZWSX"
+        "title": "Future Outlook",
+        "desc": "lorem"
       }
     },
     "timeLine": {
       "1": {
-        "title": "A",
-        "organization": "QAZWSX",
-        "desc": "gjitrgjreogjrpegrelgker"
+        "title": "Master's Degree",
+        "organization": "National Taiwan Ocean University",
+        "desc": "Department of Aquaculture, Master's Program"
+      },
+      "2": {
+        "title": "Deputy Plant Manager",
+        "organization": "Lijia Green Energy Biotech Co., Ltd.",
+        "desc": ""
+      },
+      "3": {
+        "title": "Aquaculture Technician",
+        "organization": "Yuren Enterprise Co., Ltd.",
+        "desc": ""
+      },
+      "4": {
+        "title": "Front-End Engineer Professional Training Program",
+        "organization": "Wiedu TibaMe",
+        "desc": ""
+      },
+      "5": {
+        "title": "Front-End Engineer",
+        "organization": "foreverwin electronic & information technology Co., Ltd.",
+        "desc": ""
       }
     }
   },
