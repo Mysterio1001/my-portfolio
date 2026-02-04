@@ -103,7 +103,7 @@ import { projects } from "@/data/projects.js";
 
 const { t } = useI18n();
 
-const defaultImg = "/public/default/placeholder.svg";
+const defaultImg = "/default/placeholder.svg";
 // 資料是否展開
 const isExpanded = ref(false);
 
