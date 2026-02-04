@@ -50,35 +50,39 @@
         </div>
 
         <div class="space-y-6">
-          <h3
-            class="font-mono text-lg font-semibold text-slate-900 dark:text-slate-100 mb-6"
-          >
-            {{ "// Journey" }}
-          </h3>
           <div class="relative space-y-8">
+            <!-- 延長線 -->
             <div
               class="absolute left-4.75 top-2 bottom-2 w-px bg-slate-200 dark:bg-white/10"
             />
-
             <div
               v-for="(item, index) in timelineData"
               :key="index"
               class="relative flex gap-6"
             >
+              <!-- ICONs -->
               <div
                 :class="[
                   'relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border shadow-lg glass-effect',
-                  typeColors[item.type],
+                  typeStyle[item.type].color,
+                  item.current ? 'animate-[pulse_2s_infinite]' : null,
                 ]"
               >
-                <component :is="item.icon" class="h-4 w-4" />
+                <component :is="typeStyle[item.type].icon" class="h-4 w-4" />
               </div>
-
               <div class="flex-1">
                 <div class="flex items-center gap-2 mb-1">
-                  <span class="font-mono text-xs text-blue-500">{{
-                    item.year
-                  }}</span>
+                  <!-- 時間 -->
+                  <span
+                    v-if="item.current"
+                    class="font-mono text-s text-yellow-300 animate-[pulse_2s_infinite]"
+                  >
+                    PRESENT
+                  </span>
+                  <span v-else class="font-mono text-xs text-blue-500">
+                    {{ item.year }}
+                  </span>
+                  <!-- Type -->
                   <span
                     class="px-2 py-0.5 text-[10px] uppercase tracking-wider border rounded-md opacity-70"
                   >
@@ -103,7 +107,7 @@
   </section>
 </template>
 <script setup>
-import { MapPin, Award, BookOpen } from "lucide-vue-next";
+import { MapPin, Award, BookOpen, Briefcase } from "lucide-vue-next";
 import { useI18n } from "vue-i18n";
 import { bioData, timelineData } from "@/data/about.js"; // 匯入數據
 
@@ -113,5 +117,26 @@ const typeColors = {
   work: "text-blue-500 border-blue-500/20 bg-blue-500/10",
   certification: "text-green-500 border-green-500/20 bg-green-500/10",
   education: "text-amber-500 border-amber-500/20 bg-amber-500/10",
+};
+
+const typeIcons = {
+  work: Briefcase,
+  certification: Award,
+  education: BookOpen,
+};
+
+const typeStyle = {
+  work: {
+    color: "text-blue-500 border-blue-500/20 bg-blue-500/10",
+    icon: Briefcase,
+  },
+  certification: {
+    color: "text-green-500 border-green-500/20 bg-green-500/10",
+    icon: Award,
+  },
+  education: {
+    color: "text-amber-500 border-amber-500/20 bg-amber-500/10",
+    icon: BookOpen,
+  },
 };
 </script>

@@ -9,37 +9,45 @@ export const bioData = {
   ],
   tags: ["Problem Solver", "Continuous Learner", "Beetle Hobbyist"],
 };
-export const timelineData = [
+
+// type為 education(教育), work(工作), certification(認證)
+// 新增物件後i18n也要新增
+const oriTimelineData = [
   {
-    year: "2026",
-    title: "about.timeLine.1.title",
-    organization: "about.timeLine.1.organization",
-    desc: "about.timeLine.1.desc",
+    year: "2018", // 碩士班
+    type: "education",
+  },
+  {
+    year: "2023", // 力佳
     type: "work",
-    icon: Award,
   },
   {
-    year: "2025",
-    title: "about.timeLine.2.title",
-    organization: "about.timeLine.2.organization",
-    desc: "about.timeLine.2.desc",
+    year: "2024", // 漁仁
+    type: "work",
+  },
+  {
+    year: "2025", // 前端班
     type: "certification",
-    icon: Briefcase,
   },
   {
-    year: "2024",
-    title: "about.timeLine.3.desc",
-    organization: "about.timeLine.3.organization",
-    desc: "about.timeLine.3.desc",
-    type: "education",
-    icon: Award,
-  },
-  {
-    year: "2021",
-    title: "about.timeLine.3.desc",
-    organization: "about.timeLine.3.organization",
-    desc: "about.timeLine.3.desc",
-    type: "education",
-    icon: BookOpen,
+    year: "2025", // 昊聲
+    type: "work",
+    current: true,
   },
 ];
+
+function setI18N(index) {
+  const num = index + 1;
+  const obj = {
+    title: `about.timeLine.${num}.title`,
+    organization: `about.timeLine.${num}.organization`,
+    desc: `about.timeLine.${num}.desc`,
+  };
+  return obj;
+}
+
+export const timelineData = oriTimelineData
+  .map((item, index) => {
+    return { ...item, ...setI18N(index) };
+  })
+  .reverse();

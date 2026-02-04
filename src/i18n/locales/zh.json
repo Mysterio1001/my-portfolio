@@ -24,23 +24,43 @@
     "title": "關於我",
     "bio": {
       "1": {
-        "title": "A",
-        "desc": "QAZWSX"
+        "title": "自我介紹",
+        "desc": "您好，我是吳冠儒，畢業於國立台灣海洋大學水產養殖學系，且進一步完成碩士學位，我善於溝通和愛好學習，具有計劃性，面對挑戰時，可以理性思維來解決問題並將其推動到更高水準。過去的職場經歷中，我習慣透過分析數據來制定策略，讓計畫的執行更有效率且穩定，這些特質也成為我轉職為前端工程師的重要助力。"
       },
       "2": {
-        "title": "A",
-        "desc": "QAZWSX"
+        "title": "技術進修",
+        "desc": "lorem"
       },
       "3": {
-        "title": "A",
-        "desc": "QAZWSX"
+        "title": "未來展望",
+        "desc": "lorem"
       }
     },
     "timeLine": {
       "1": {
-        "title": "A",
-        "organization": "QAZWSX",
-        "desc": "gjitrgjreogjrpegrelgker"
+        "title": "碩士學位",
+        "organization": "國立臺灣海洋大學",
+        "desc": "水產養殖學系 碩士班"
+      },
+      "2": {
+        "title": "副廠長",
+        "organization": "力佳綠能生技有限公司",
+        "desc": ""
+      },
+      "3": {
+        "title": "水產養殖技術師",
+        "organization": "漁仁企業股份有限公司",
+        "desc": ""
+      },
+      "4": {
+        "title": "前端工程師專業技術養成班",
+        "organization": "緯育TibaMe",
+        "desc": ""
+      },
+      "5": {
+        "title": "前端工程師",
+        "organization": "昊聲訊息技術有限公司",
+        "desc": ""
       }
     }
   },
