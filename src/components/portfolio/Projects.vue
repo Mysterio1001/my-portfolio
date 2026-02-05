@@ -113,12 +113,12 @@ const isExpanded = ref(false);
 // 僅展示前三筆資料
 const defaultProjects = computed(() => {
   let count;
-  if (breakpoint.value === "lg") {
-    count = 3;
-  } else if (breakpoint.value === "md") {
+  if (breakpoint.value === "md") {
     count = 2;
-  } else {
+  } else if (breakpoint.value === "sm") {
     count = 1;
+  } else {
+    count = 3;
   }
   return isExpanded.value ? projects : projects.slice(0, count);
 });
