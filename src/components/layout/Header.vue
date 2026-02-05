@@ -88,7 +88,7 @@
               @click="mobileMenuOpen = false"
               class="font-mono text-sm text-slate-500 dark:text-slate-400 hover:text-blue-500"
             >
-              {{ link.label }}
+              {{ t(link.label) }}
             </a>
           </nav>
         </div>
