@@ -100,8 +100,11 @@ import { ref, computed } from "vue";
 import { useI18n } from "vue-i18n";
 import { ExternalLink, Github, ArrowDown, ArrowUp } from "lucide-vue-next";
 import { projects } from "@/data/projects.js";
+import { useBreakpoint } from "@/composables/useBreakpoint";
 
 const { t } = useI18n();
+// 判斷斷點
+const breakpoint = useBreakpoint();
 
 const defaultImg = "/default/placeholder.svg";
 // 資料是否展開
@@ -109,7 +112,15 @@ const isExpanded = ref(false);
 
 // 僅展示前三筆資料
 const defaultProjects = computed(() => {
-  return isExpanded.value ? projects : projects.slice(0, 3);
+  let count;
+  if (breakpoint.value === "lg") {
+    count = 3;
+  } else if (breakpoint.value === "md") {
+    count = 2;
+  } else {
+    count = 1;
+  }
+  return isExpanded.value ? projects : projects.slice(0, count);
 });
 // 展示全部資料
 const showAllProjects = () => {
