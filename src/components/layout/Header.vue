@@ -28,7 +28,7 @@
           <div ref="langMenuRef" class="relative">
             <button
               @click="langToggle"
-              @mouseenter="langMenuOpen = true"
+              @mouseenter="langMouseenter"
               class="flex items-center gap-1 font-mono text-xs text-slate-600 dark:text-slate-300 hover:text-blue-500 cursor-pointer"
             >
               {{ currentLang }}
@@ -98,13 +98,21 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import { useDark, useToggle, onClickOutside } from "@vueuse/core";
 import { Moon, Sun, Menu, X, Terminal, ChevronDown } from "lucide-vue-next";
 import { useI18n } from "vue-i18n";
+import { useBreakpoint } from "@/composables/useBreakpoint";
 
 const { locale, t } = useI18n();
+const breakpoint = useBreakpoint();
 
+const isMobile = computed(
+  () =>
+    breakpoint.value === "md" ||
+    breakpoint.value === "sm" ||
+    breakpoint.value === "xs",
+);
 // 1. 主題管理
 // Header.vue
 const isDark = useDark({
@@ -133,8 +141,17 @@ const languages = [
   { code: "EN", label: "English" },
 ];
 
+const langMouseenter = () => {
+  if (!isMobile.value) {
+    langMenuOpen.value = true;
+  }
+};
+
 const langToggle = () => {
-  langMenuOpen.value = !langMenuOpen.value;
+  // mobile才允許
+  if (isMobile.value) {
+    langMenuOpen.value = !langMenuOpen.value;
+  }
 };
 
 const selectLang = (code) => {
