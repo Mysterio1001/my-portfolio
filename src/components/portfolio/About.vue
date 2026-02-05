@@ -85,16 +85,26 @@
                   <!-- Type -->
                   <span
                     class="px-2 py-0.5 text-[10px] uppercase tracking-wider border rounded-md opacity-70"
+                    :class="item.current ? 'animate-[pulse_2s_infinite]' : null"
                   >
                     {{ item.type }}
                   </span>
                 </div>
-                <h4 class="font-semibold text-slate-900 dark:text-slate-100">
+                <h4
+                  class="font-semibold text-slate-900 dark:text-slate-100"
+                  :class="item.current ? 'animate-[pulse_2s_infinite]' : null"
+                >
                   {{ t(item.title) }}
                 </h4>
-                <p class="text-sm text-slate-500">{{ t(item.organization) }}</p>
+                <p
+                  class="text-sm text-slate-500"
+                  :class="item.current ? 'animate-[pulse_2s_infinite]' : null"
+                >
+                  {{ t(item.organization) }}
+                </p>
                 <p
                   class="text-sm text-slate-500 dark:text-slate-400 mt-2 leading-relaxed"
+                  :class="item.current ? 'animate-[pulse_2s_infinite]' : null"
                 >
                   {{ t(item.desc) }}
                 </p>
