@@ -74,7 +74,7 @@
             </div>
             <!-- 程式碼展現 -->
             <pre class="p-6 font-mono text-sm leading-relaxed text-left">
-<code class="font-mono text-sm sm:text-base leading-relaxed">
+<code class="font-mono text-sm sm:text-base leading-relaxed" ref="codeContainer">
     <span class="text-purple-600 dark:text-purple-400 font-bold">const</span> <span class="text-blue-600 dark:text-blue-400">developer</span> = {
       <span class="text-red-600 dark:text-red-400">name</span>: <span class="text-green-600 dark:text-green-400">'Ian Wu'</span>,
       <span class="text-red-600 dark:text-red-400">role</span>: <span class="text-green-600 dark:text-green-400">'Frontend Engineer'</span>,
@@ -86,7 +86,7 @@
       ],
       <span class="text-red-600 dark:text-red-400">available</span>: <span class="text-green-600 dark:text-green-400">true</span>
     };
-  </code>
+</code>
             </pre>
           </div>
         </div>
@@ -97,12 +97,14 @@
 <script setup>
 import { ref, onMounted, computed, watch } from "vue";
 import { useI18n } from "vue-i18n";
-import { ArrowDown, FileText, FolderOpen } from "lucide-vue-next";
+import { FileText, FolderOpen } from "lucide-vue-next";
+import { typeCodeEffect } from "@/composables/typeWriter";
 
 const { t, locale } = useI18n();
 
 const displayedText = ref("");
 const isDeleting = ref(false);
+const codeContainer = ref(null);
 const currentTitleIndex = ref(0);
 const titlesKey = [
   "hero.typewriter.0",
@@ -114,7 +116,7 @@ const titlesKey = [
 // 從 i18n 獲取標題清單
 const titles = computed(() => titlesKey.map((i) => t(i)));
 
-// 打字機
+// 重複打字機
 const type = () => {
   if (titles.value.length === 0) return;
 
@@ -151,5 +153,6 @@ watch(locale, () => {
 
 onMounted(() => {
   type();
+  typeCodeEffect(codeContainer.value);
 });
 </script>
