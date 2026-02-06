@@ -77,6 +77,7 @@ import {
   Terminal,
 } from "lucide-vue-next";
 import { useI18n } from "vue-i18n";
+import { githubUrl } from "@/config/url";
 
 const { t } = useI18n();
 const currentYear = new Date().getFullYear();
@@ -84,7 +85,7 @@ const currentYear = new Date().getFullYear();
 const socialLinks = [
   {
     name: "GitHub",
-    href: "https://github.com/Mysterio1001",
+    href: githubUrl,
     icon: Github,
   },
   {

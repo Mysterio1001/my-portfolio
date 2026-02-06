@@ -15,11 +15,11 @@
         </p>
       </div>
       <!-- 專案清單 -->
-      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      <div class="flex gap-8 overflow-x-auto">
         <div
-          v-for="project in defaultProjects"
+          v-for="project in projects"
           :key="project.id"
-          class="group glass-effect border border-white/10 overflow-hidden rounded-2xl hover:border-blue-500/30 transition-all duration-500 shadow-xl"
+          class="group shrink-0 w-full sm:w-1/2 lg:w-1/3 glass-effect border border-white/10 overflow-hidden rounded-2xl hover:border-blue-500/30 transition-all duration-500 shadow-xl"
         >
           <div class="relative aspect-video overflow-hidden bg-slate-800">
             <img
@@ -75,21 +75,16 @@
           </div>
         </div>
       </div>
-      <!-- 展示超過三筆以上的資料 -->
-      <div class="text-center mt-12" v-if="projects.length >= 3">
-        <div
+      <div class="text-center mt-12">
+        <a
+          :href="githubUrl"
           class="group inline-flex items-center gap-2 px-6 py-3 font-mono glass-effect border border-white/10 text-slate-700 dark:text-slate-200 rounded-xl hover:bg-white/10 transition-all cursor-pointer"
-          @click="showAllProjects"
         >
-          <span v-if="!isExpanded">
+          <span>
             {{ t("projects.viewAllProjects") }}
           </span>
-          <ArrowUp
-            v-if="isExpanded"
-            class="h-4 w-4 group-hover:animate-bounce"
-          />
-          <ArrowDown v-else class="h-4 w-4 group-hover:animate-bounce" />
-        </div>
+          <ArrowRight class="h-4 w-4 group-hover:animate-bounce-x" />
+        </a>
       </div>
     </div>
   </section>
@@ -98,34 +93,14 @@
 <script setup>
 import { ref, computed } from "vue";
 import { useI18n } from "vue-i18n";
-import { ExternalLink, Github, ArrowDown, ArrowUp } from "lucide-vue-next";
+import { ExternalLink, Github, ArrowDown, ArrowRight } from "lucide-vue-next";
 import { projects } from "@/data/projects.js";
-import { useBreakpoint } from "@/composables/useBreakpoint";
+import { githubUrl } from "@/config/url";
 
 const { t } = useI18n();
-// 判斷斷點
-const breakpoint = useBreakpoint();
 
 const defaultImg = "/default/placeholder.svg";
 // 資料是否展開
-const isExpanded = ref(false);
-
-// 僅展示前三筆資料
-const defaultProjects = computed(() => {
-  let count;
-  if (breakpoint.value === "md") {
-    count = 2;
-  } else if (breakpoint.value === "sm" || breakpoint.value === "xs") {
-    count = 1;
-  } else {
-    count = 3;
-  }
-  return isExpanded.value ? projects : projects.slice(0, count);
-});
-// 展示全部資料
-const showAllProjects = () => {
-  isExpanded.value = !isExpanded.value;
-};
 
 // 圖片錯誤時處理
 const handleImgError = (e) => {
