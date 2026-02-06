@@ -115,7 +115,7 @@ const defaultProjects = computed(() => {
   let count;
   if (breakpoint.value === "md") {
     count = 2;
-  } else if (breakpoint.value === "sm") {
+  } else if (breakpoint.value === "sm" || breakpoint.value === "xs") {
     count = 1;
   } else {
     count = 3;
