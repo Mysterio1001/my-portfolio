@@ -23,7 +23,7 @@
                 class="font-mono text-xl sm:text-2xl text-slate-500 dark:text-slate-400"
               >
                 {{ ">" }} {{ displayedText }}
-                <span class="animate-pulse text-blue-500">|</span>
+                <span class="caret text-blue-500">|</span>
               </p>
             </div>
           </div>
@@ -74,7 +74,7 @@
             </div>
             <!-- 程式碼展現 -->
             <pre class="p-6 font-mono text-sm leading-relaxed text-left">
-<code class="font-mono text-sm sm:text-base leading-relaxed" ref="codeContainer">
+<code ref="codeContainer" class="font-mono text-sm sm:text-base leading-relaxed caret-box" >
     <span class="text-purple-600 dark:text-purple-400 font-bold">const</span> <span class="text-blue-600 dark:text-blue-400">developer</span> = {
       <span class="text-red-600 dark:text-red-400">name</span>: <span class="text-green-600 dark:text-green-400">'Ian Wu'</span>,
       <span class="text-red-600 dark:text-red-400">role</span>: <span class="text-green-600 dark:text-green-400">'Frontend Engineer'</span>,
@@ -85,8 +85,7 @@
         <span class="text-green-600 dark:text-green-400">'AI-Assisted Development'</span>
       ],
       <span class="text-red-600 dark:text-red-400">available</span>: <span class="text-green-600 dark:text-green-400">true</span>
-    };
-</code>
+    };</code>
             </pre>
           </div>
         </div>
@@ -156,3 +155,5 @@ onMounted(() => {
   typeCodeEffect(codeContainer.value);
 });
 </script>
+
+<style></style>

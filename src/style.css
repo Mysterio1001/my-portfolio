@@ -40,3 +40,28 @@ body {
     border-color 0.8s ease,
     box-shadow 0.8s ease !important;
 }
+
+.caret-box::after {
+  content: "|";
+  font-weight: bold;
+  color: #1e293b;
+  animation: blink 1s step-end infinite;
+}
+
+.caret {
+  animation: blink 1s step-end infinite;
+}
+
+.dark .caret-box::after {
+  color: white;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
