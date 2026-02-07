@@ -15,9 +15,15 @@
         </p>
       </div>
       <!-- 專案清單 -->
-      <div class="flex gap-8 overflow-x-auto">
+      <div
+        ref="projectsBox"
+        class="flex gap-4 overflow-x-auto no-scrollbar pb-5"
+        @mouseenter="isPaused = !isPaused"
+        @mouseleave="isPaused = !isPaused"
+      >
+        <!-- 視覺效果將陣列複製兩倍 -->
         <div
-          v-for="project in projects"
+          v-for="project in [...projects, ...projects]"
           :key="project.id"
           class="group shrink-0 w-full sm:w-1/2 lg:w-1/3 glass-effect border border-white/10 overflow-hidden rounded-2xl hover:border-blue-500/30 transition-all duration-500 shadow-xl"
         >
@@ -30,24 +36,43 @@
             />
             <div
               class="absolute inset-0 bg-linear-to-t from-slate-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              :class="
+                isMobile ? 'opacity-100' : 'opacity-0  group-hover:opacity-100 '
+              "
             />
 
             <div
-              class="absolute bottom-4 left-4 right-4 flex gap-2 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300"
+              class="absolute bottom-4 left-4 right-4 flex gap-2 transition-all duration-300"
+              :class="
+                isMobile
+                  ? 'opacity-100 translate-y-0 justify-end'
+                  : 'opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0'
+              "
             >
               <a
                 :href="project.github"
                 target="_blank"
-                class="flex-1 flex items-center justify-center gap-2 px-3 py-2 font-mono text-xs glass-effect border border-white/10 text-white rounded-lg hover:bg-white/20 transition-all"
+                class="flex justify-center items-center gap-2 font-mono text-xs glass-effect border border-white/10 text-white hover:bg-white/20 transition-all"
+                :class="
+                  isMobile
+                    ? 'rounded-full px-4 py-4'
+                    : 'flex-1 px-3 py-2 rounded-lg'
+                "
               >
-                <Github class="h-3.5 w-3.5" /> Code
+                <Github class="h-3.5 w-3.5" /><sapn v-if="!isMobile">Code</sapn>
               </a>
               <a
                 :href="project.demo"
                 target="_blank"
-                class="flex-1 flex items-center justify-center gap-2 px-3 py-2 font-mono text-xs bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-all"
+                class="flex justify-center items-center gap-2 font-mono text-xs bg-blue-500 text-white hover:bg-blue-600 transition-all"
+                :class="
+                  isMobile
+                    ? 'rounded-full px-4 py-4'
+                    : 'flex-1 px-3 py-2 rounded-lg'
+                "
               >
-                <ExternalLink class="h-3.5 w-3.5" /> Demo
+                <ExternalLink class="h-3.5 w-3.5" />
+                <sapn v-if="!isMobile">Demo</sapn>
               </a>
             </div>
           </div>
@@ -91,16 +116,20 @@
 </template>
 
 <script setup>
-import { ref, computed } from "vue";
+import { ref, computed, onMounted, onUnmounted } from "vue";
 import { useI18n } from "vue-i18n";
 import { ExternalLink, Github, ArrowDown, ArrowRight } from "lucide-vue-next";
 import { projects } from "@/data/projects.js";
+import { useBreakpoint } from "@/composables/useBreakpoint";
 import { githubUrl } from "@/config/url";
 
 const { t } = useI18n();
 
 const defaultImg = "/default/placeholder.svg";
-// 資料是否展開
+
+const projectsBox = ref(null);
+const isPaused = ref(false);
+let animationId = null; // 用來記錄動畫偵，防止重複啟動
 
 // 圖片錯誤時處理
 const handleImgError = (e) => {
@@ -109,4 +138,63 @@ const handleImgError = (e) => {
   // 處理為預設圖後關閉錯誤 防止無限迴圈
   e.target.onerror = null;
 };
+
+// 自動滾動卷軸
+function autoScroll(container, speed = 1) {
+  if (!container) return;
+  const next = () => {
+    if (!isPaused.value) {
+      container.scrollLeft += speed;
+      // 無縫接軌交給handleScroll
+    }
+
+    // 不斷持續執行 isPaused為false時一樣有執行只是沒有位移值
+    animationId = requestAnimationFrame(next); // 視覺流暢度js內建動畫呼叫
+  };
+
+  if (animationId) cancelAnimationFrame(animationId);
+  animationId = requestAnimationFrame(next);
+}
+
+// 手動滾動卷軸(監聽)
+function handleScroll(container) {
+  if (!container) return;
+  const handle = () => {
+    const totalWidth = container.scrollWidth;
+    const originalWidth = totalWidth / 2;
+
+    // 手動向右滑過頭
+    if (container.scrollLeft >= originalWidth) {
+      container.scrollLeft = 1;
+      // 手動向左滑過頭
+    } else if (container.scrollLeft <= 0) {
+      container.scrollLeft = originalWidth - 1;
+    }
+  };
+  container.addEventListener("scroll", handle);
+}
+
+// 是否為行動裝置
+const isMobile = computed(() => {
+  // 偵測是否為觸控為主的裝置（無 Hover 支援）
+  const noHoverSupport = window.matchMedia("(any-hover: none)").matches;
+  const current = useBreakpoint();
+  const isSmallSrceen = current === "sm" || current === "xs";
+
+  return noHoverSupport || isSmallSrceen;
+});
+
+onMounted(() => {
+  autoScroll(projectsBox.value);
+  handleScroll(projectsBox.value);
+});
+
+onUnmounted(() => {
+  if (animationId) cancelAnimationFrame(animationId);
+
+  const container = projectsBox.value;
+  if (container) {
+    container.removeEventListener("scroll");
+  }
+});
 </script>

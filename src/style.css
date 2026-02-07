@@ -66,6 +66,7 @@ body {
   }
 }
 
+/* 橫向擺動動畫 */
 @theme {
   --animate-bounce-x: bounceX 1s infinite;
 }
@@ -80,4 +81,12 @@ body {
     transform: translateX(6px);
     animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
   }
+}
+
+/* 隱藏卷軸 */
+.no-scrollbar {
+  scrollbar-width: none; /* 隱藏捲軸 */
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
